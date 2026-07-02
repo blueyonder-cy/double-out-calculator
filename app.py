@@ -17,7 +17,7 @@ col1, col2 = st.columns(2)
 with col1:
    block_hours = st.number_input("Total Block Time (Hours)", min_value=0.0, max_value=150.0, value=0.0, step=0.1, help="Enter total block hours for the flight or sequence.")
 with col2:
-   # Default to Central (CST/CDT) using index=0
+# Default to Central (CST/CDT) using index=0
 tz_choice = st.selectbox("Arrival Local Timezone", [
     "Central (CST/CDT)",  
     "Alaska (AKST/AKDT)", 
