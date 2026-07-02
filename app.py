@@ -15,15 +15,24 @@ st.subheader("📋 Flight Leg Details")
 
 col1, col2 = st.columns(2)
 with col1:
-    block_hours = st.number_input("Total Block Time (Hours)", min_value=0.0, max_value=30.0, value=23.8, step=0.1, help="Enter total block hours for the flight or sequence.")
+   block_hours = st.number_input("Total Block Time (Hours)", min_value=0.0, max_value=30.0, value=23.8, step=0.1, help="Enter total block hours for the flight or sequence.")
 with col2:
-    # Default to HKT since you are out there right now!
-    tz_choice = st.selectbox("Arrival Local Timezone", ["HKT (Hong Kong)", "Alaska (AKST/AKDT)", "Central (CST/CDT)", "Eastern (EST/EDT)"])
+    # Default to HKT
+    tz_choice = st.selectbox("Arrival Local Timezone", [
+        "HKT (Hong Kong)", 
+        "Alaska (AKST/AKDT)", 
+        "Pacific (PST/PDT)",
+        "Hawaii (HST)",
+        "Central (CST/CDT)", 
+        "Eastern (EST/EDT)"
+    ])
 
 # Timezone mapping
 tz_map = {
     "HKT (Hong Kong)": "Asia/Hong_Kong",
     "Alaska (AKST/AKDT)": "America/Anchorage",
+    "Pacific (PST/PDT)": "America/Los_Angeles",
+    "Hawaii (HST)": "Pacific/Honolulu",
     "Central (CST/CDT)": "America/Chicago",
     "Eastern (EST/EDT)": "America/New_York"
 }
