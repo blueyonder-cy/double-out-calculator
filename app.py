@@ -56,7 +56,7 @@ arrival_time = time(hour_choice, minute_choice)
 st.markdown("---")
 
 # 2. Calculation Logic
-if st.button("🚀 Calculate Rest Windows", use_container_width=True):
+if st.button("Calculate Min Time at Home Needed", use_container_width=True):
     # Combine input date and time into a localized datetime object
     local_arrival_dt = chosen_tz.localize(datetime.combine(arrival_date, arrival_time))
     
