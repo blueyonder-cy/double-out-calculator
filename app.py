@@ -42,7 +42,16 @@ col3, col4 = st.columns(2)
 with col3:
     arrival_date = st.date_input("Arrival Date (Local)", value=datetime.now(chosen_tz).date())
 with col4:
-    arrival_time = st.time_input("Arrival Time (Local)", value=datetime.now(chosen_tz).time())
+   st.write("### Arrival Local Time")
+time_col1, time_col2 = st.columns(2)
+with time_col1:
+    hour_choice = st.selectbox("Hour (24-Clock)", list(range(24)), format_func=lambda x: f"{x:02d}")
+with time_col2:
+    minute_choice = st.selectbox("Minute", list(range(60)), format_func=lambda x: f"{x:02d}")
+
+# Combine the selected date with our new dropdown hours/minutes
+from datetime import time
+arrival_time = time(hour_choice, minute_choice)
 
 st.markdown("---")
 
