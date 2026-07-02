@@ -17,24 +17,34 @@ col1, col2 = st.columns(2)
 with col1:
    block_hours = st.number_input("Total Block Time (Hours)", min_value=0.0, max_value=150.0, value=0.0, step=0.1, help="Enter total block hours for the flight or sequence.")
 with col2:
-    # Default to HKT
-    tz_choice = st.selectbox("Arrival Local Timezone", [
-        "HKT (Hong Kong)", 
-        "Alaska (AKST/AKDT)", 
-        "Pacific (PST/PDT)",
-        "Hawaii (HST)",
-        "Central (CST/CDT)", 
-        "Eastern (EST/EDT)"
-    ])
+   # Default to Central (CST/CDT) using index=0
+tz_choice = st.selectbox("Arrival Local Timezone", [
+    "Central (CST/CDT)",  
+    "Alaska (AKST/AKDT)", 
+    "Pacific (PST/PDT)",
+    "Mountain (MST/MDT)",
+    "Hawaii (HST)",
+    "Eastern (EST/EDT)",
+    "HKT (Hong Kong)",
+    "Japan (JST)",
+    "London (GMT/BST)",
+    "Germany (CET/CEST)",
+    "Australia (AEST/AEDT)"
+], index=0)
 
 # Timezone mapping
 tz_map = {
-    "HKT (Hong Kong)": "Asia/Hong_Kong",
+    "Central (CST/CDT)": "America/Chicago",
     "Alaska (AKST/AKDT)": "America/Anchorage",
     "Pacific (PST/PDT)": "America/Los_Angeles",
+    "Mountain (MST/MDT)": "America/Denver",
     "Hawaii (HST)": "Pacific/Honolulu",
-    "Central (CST/CDT)": "America/Chicago",
-    "Eastern (EST/EDT)": "America/New_York"
+    "Eastern (EST/EDT)": "America/New_York",
+    "HKT (Hong Kong)": "Asia/Hong_Kong",
+    "Japan (JST)": "Asia/Tokyo",
+    "London (GMT/BST)": "Europe/London",
+    "Germany (CET/CEST)": "Europe/Berlin",
+    "Australia (AEST/AEDT)": "Australia/Sydney"
 }
 chosen_tz = pytz.timezone(tz_map[tz_choice])
 
